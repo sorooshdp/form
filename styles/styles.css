@@ -1,10 +1,21 @@
 :root {
+  /* Light theme variables */
   --background-color: #f3f3e3;
   --border-color: #8d99c0;
   --font-color: #243264;
+  --input-font-color: #243264;
   --main-color: #fc6c4c;
   --background-box1: #fab564;
   --background-box2: #fca999;
+
+  /* Dark theme variables */
+  --background-color-dark: #1a1a1a;
+  --border-color-dark: #4a4a4a;
+  --font-color-dark: #ffffff;
+  --input-font-color-dark: #1a1a1a;
+  --main-color-dark: #ff8264;
+  --background-box1-dark: #c17642;
+  --background-box2-dark: #c16e5f;
 }
 
 body,
@@ -54,7 +65,6 @@ i {
 }
 
 /* styles for text */
-
 input[type="text"] {
   width: 100%;
   height: 40px;
@@ -65,7 +75,7 @@ input[type="text"] {
   border-radius: 5px;
   font-family: "Archivo", sans-serif;
   font-weight: 800;
-  color: var(--font-color);
+  color: var(--input-font-color);
   padding: 0.5rem;
 }
 
@@ -85,7 +95,7 @@ input[type="checkbox"] {
   background-color: #fff;
   margin: 0 5px 0 0;
   font: inherit;
-  color: var(--font-color);
+  color: var(--input-font-color);
   width: 1.15em;
   height: 1.15em;
   border: 0.15em solid var(--border-color);
@@ -101,7 +111,7 @@ input[type="checkbox"]::before {
   height: 0.65em;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--font-color);
+  box-shadow: inset 1em 1em #000;
   /* Windows High Contrast Mode */
   background-color: CanvasText;
   transform-origin: bottom left;
@@ -118,7 +128,7 @@ input[type="date"] {
   height: 40px;
   padding: 15px;
   font-family: "Archivo", sans-serif;
-  color: var(--font-color);
+  color: var(--input-font-color);
   border: 2px solid var(--border-color);
   border-radius: 5px;
 }
@@ -132,6 +142,50 @@ input[type="date"]:focus {
   padding: 5px;
   cursor: pointer;
   border-radius: 3px;
+}
+
+body.dark-theme {
+  --background-color: var(--background-color-dark);
+  --border-color: var(--border-color-dark);
+  --font-color: var(--font-color-dark);
+  --input-font-color: var(--input-font-color-dark);
+  --main-color: var(--main-color-dark);
+  --background-box1: var(--background-box1-dark);
+  --background-box2: var(--background-box2-dark);
+}
+
+.theme_button {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+#theme_button {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#theme_button:hover {
+  background-color: var(--border-color);
+}
+
+#theme_button:hover i {
+  color: white;
+}
+
+#theme_button i {
+  font-size: 1.2rem;
+  color: var(--font-color);
+  transition: color 0.3s ease;
 }
 
 .date-group {
@@ -202,7 +256,7 @@ input[type="date"]:focus {
 
 form {
   width: 40%;
-  background-color: #fff;
+  background-color: var(--border-color);
   padding: 3rem;
   border-radius: 15px;
   z-index: 10;
@@ -275,27 +329,3 @@ input[type="submit"]:hover {
     margin-top: 1rem;
   }
 }
-
-/* two background boxes */
-/* .box1 {
-  position: fixed;
-  width: 13rem;
-  height: 24rem;
-  top: 60%;
-  left: 15%;
-  background-color: var(--background-box1);
-  z-index: 1;
-  border-radius: 48px;
-  transform: translateY(-50%);
-}
-
-.box2 {
-  position: relative;
-  width: 22rem;
-  height: 25rem;
-  top: -20rem;
-  left: 50rem;
-  background-color: var(--background-box2);
-  z-index: 5;
-  border-radius: 48px;
-} */
