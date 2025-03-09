@@ -9,9 +9,16 @@
 
 body,
 html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   box-sizing: border-box;
   background-color: var(--background-color);
   z-index: 0;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
 *,
@@ -136,11 +143,36 @@ input[type="date"]:focus {
 /* form styles */
 .form-container {
   width: 100%;
-  margin-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
+}
+
+.form-container::before,
+.form-container::after {
+  content: '';
+  position: fixed;
+  border-radius: 48px;
+  z-index: 1;
+}
+
+.form-container::before {
+  width: 13rem;
+  height: 24rem;
+  top: 24%;
+  left: 23%;
+  background-color: var(--background-box1);
+  transform: translateY(-50%);
+}
+
+.form-container::after {
+  width: 22rem;
+  height: 25rem;
+  top: 75%;
+  right: 15%;
+  background-color: var(--background-box2);
+  transform: translateY(-50%);
 }
 
 .form-group {
@@ -154,10 +186,18 @@ input[type="date"]:focus {
   margin-left: 5px;
 }
 
+.form-group label span {
+  display: inline-block;
+  margin-left: 5px;
+}
+
 .form-group:has(input[type="checkbox"]) {
-  display: grid;
-  grid-template-columns: 1em auto;
-  gap: 0.5em;
+  width: 100%;
+}
+
+.form-group:has(input[type="checkbox"]) label,
+.form-group:has(input[type="checkbox"]) input[type="checkbox"] {
+  cursor: pointer;
 }
 
 form {
@@ -166,6 +206,7 @@ form {
   padding: 3rem;
   border-radius: 15px;
   z-index: 10;
+  position: relative;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
@@ -184,6 +225,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+  cursor: pointer;
   opacity: 0.8;
 }
 
@@ -212,6 +254,11 @@ input[type="submit"]:hover {
 }
 
 @media (max-width: 1200px) {
+  .form-container::before,
+  .form-container::after {
+    display: none;
+  }
+
   .box1,
   .box2 {
     display: none;
@@ -230,16 +277,16 @@ input[type="submit"]:hover {
 }
 
 /* two background boxes */
-.box1 {
-  position: relative;
-  margin-top: -345px;
+/* .box1 {
+  position: fixed;
   width: 13rem;
   height: 24rem;
-  top: 25rem;
-  left: 23rem;
+  top: 60%;
+  left: 15%;
   background-color: var(--background-box1);
-  z-index: 5;
+  z-index: 1;
   border-radius: 48px;
+  transform: translateY(-50%);
 }
 
 .box2 {
@@ -251,4 +298,4 @@ input[type="submit"]:hover {
   background-color: var(--background-box2);
   z-index: 5;
   border-radius: 48px;
-}
+} */
